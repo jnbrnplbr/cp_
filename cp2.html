@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompassPeak | Curating Extraordinary Horizons</title>
+    <!-- Frameworks & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --navy: #1a2b44;
+            --gold: #b5905d;
+            --gold-light: #d4b483;
+        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .font-serif { font-family: 'Marcellus', serif; }
+        
+        .gold-gradient {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+        }
+        
+        .nav-scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+        }
+
+        .tour-card:hover .tour-overlay { opacity: 1; }
+        
+        /* Custom scrollbar for a luxury feel */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-white text-[#1a2b44]">
+
+    <!-- Header / Navigation -->
+    <nav id="main-nav" class="fixed w-full z-50 transition-all duration-500 py-8 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Brand -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-[#1a2b44] rounded-full flex items-center justify-center border border-[#b5905d]/30">
+                    <i data-lucide="compass" class="text-[#b5905d] w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-bold tracking-tighter text-white logo-text transition-colors">Compass<span class="text-[#b5905d]">Peak</span></span>
+                    <p class="text-[8px] uppercase tracking-[0.4em] text-white/60 logo-subtext">Travel & Tours</p>
+                </div>
+            </div>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-10 text-white nav-links transition-colors">
+                <a href="#destinations" class="text-[11px] font-bold uppercase tracking-widest hover:text-[#b5905d]">Destinations</a>
+                <a href="#itinerary" class="text-[11px] font-bold uppercase tracking-widest hover:text-[#b5905d]">Almaty Special</a>
+                <a href="#experience" class="text-[11px] font-bold uppercase tracking-widest hover:text-[#b5905d]">The Experience</a>
+                <button class="gold-gradient text-[#1a2b44] px-8 py-3 rounded-full text-[11px] font-black uppercase tracking-widest hover:scale-105 transition-transform">
+                    Inquire Now
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <!-- Representing the mountain range from your flyer -->
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover" alt="Almaty Mountains">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-[#1a2b44]/40 to-[#1a2b44]"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-6 max-w-4xl">
+            <div class="inline-block px-4 py-1 border border-[#b5905d]/50 bg-white/5 backdrop-blur-md rounded-full mb-6">
+                <span class="text-[#b5905d] text-[10px] font-bold uppercase tracking-[0.4em]">Available Until April 2026</span>
+            </div>
+            <h1 class="text-6xl md:text-8xl font-serif text-white mb-6 leading-tight">
+                Curating <span class="text-transparent bg-clip-text gold-gradient">Extraordinary</span> Horizons
+            </h1>
+            <p class="text-lg md:text-xl text-white/80 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                Beyond destinations, we deliver memories. Experience the majestic peaks of Kazakhstan with our bespoke land arrangement packages.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#itinerary" class="gold-gradient text-[#1a2b44] px-10 py-5 rounded-2xl font-bold uppercase tracking-widest text-xs hover:shadow-[0_0_30px_rgba(181,144,93,0.3)] transition-all">
+                    Explore Almaty Tour
+                </a>
+                <span class="text-white/40 text-xs font-medium">Starting at ₱10,999/pax</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destination Highlight (Almaty) -->
+    <section id="itinerary" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-16">
+                <!-- Info Column -->
+                <div class="lg:w-1/3">
+                    <span class="text-[#b5905d] font-black uppercase tracking-[0.3em] text-[11px] block mb-4">Limited Offer Land Arrangement</span>
+                    <h2 class="text-5xl font-serif text-[#1a2b44] mb-6">Almaty Tour, <br/>Kazakhstan</h2>
+                    <p class="text-slate-600 mb-8 leading-relaxed">A breathtaking 3-day journey through the health-giving heights of Shymbulak, the serenity of Lake Kaindy, and the dramatic vistas of the Charyn Canyon.</p>
+                    
+                    <div class="bg-white p-8 rounded-[2.5rem] shadow-xl border border-slate-100 mb-8">
+                        <div class="flex items-end gap-2 mb-2">
+                            <span class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">As low as</span>
+                            <span class="text-4xl font-black text-[#1a2b44]">₱10,999</span>
+                        </div>
+                        <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">Per Pax • 3 Days / 2 Nights</p>
+                        
+                        <hr class="my-6 border-slate-100">
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i>
+                                <span class="text-sm font-medium text-slate-700">Daily Breakfast Included</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i>
+                                <span class="text-sm font-medium text-slate-700">Roundtrip Transport</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i>
+                                <span class="text-sm font-medium text-slate-700">Professional Tour Guide</span>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full mt-8 bg-[#1a2b44] text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] hover:bg-[#b5905d] transition-colors shadow-lg">
+                            Book This Destination
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Itinerary Column -->
+                <div class="lg:w-2/3 space-y-8">
+                    <!-- Day 1 -->
+                    <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 gold-gradient rounded-2xl flex items-center justify-center font-serif text-2xl text-[#1a2b44]">1</div>
+                            <h3 class="text-2xl font-serif text-[#1a2b44]">Medeu & City Culture</h3>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex gap-4 p-4 bg-slate-50 rounded-xl">
+                                <span class="text-[10px] font-black text-[#b5905d] mt-1">09:00</span>
+                                <p class="text-sm">Arrive at Medeu Stairs Health Hike</p>
+                            </div>
+                            <div class="flex gap-4 p-4 bg-slate-50 rounded-xl">
+                                <span class="text-[10px] font-black text-[#b5905d] mt-1">10:30</span>
+                                <p class="text-sm">Scenic Cable Car to Shymbulak</p>
+                            </div>
+                            <div class="flex gap-4 p-4 bg-slate-50 rounded-xl">
+                                <span class="text-[10px] font-black text-[#b5905d] mt-1">14:00</span>
+                                <p class="text-sm">Green Bazaar & Zenkov Cathedral</p>
+                            </div>
+                            <div class="flex gap-4 p-4 bg-slate-50 rounded-xl">
+                                <span class="text-[10px] font-black text-[#b5905d] mt-1">17:00</span>
+                                <p class="text-sm">Sunset walk at Kok-tobe</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 2 -->
+                    <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 gold-gradient rounded-2xl flex items-center justify-center font-serif text-2xl text-[#1a2b44]">2</div>
+                            <h3 class="text-2xl font-serif text-[#1a2b44]">Alpine Lakes & Villages</h3>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex gap-4 p-4 bg-slate-50 rounded-xl">
+                                <span class="text-[10px] font-black text-[#b5905d] mt-1">09:00</span>
+                                <p class="text-sm">Lake Kaindy Boat & Excursion</p>
+                            </div>
+                            <div class="flex gap-4 p-4 bg-slate-50 rounded-xl">
+                                <span class="text-[10px] font-black text-[#b5905d] mt-1">14:00</span>
+                                <p class="text-sm">Kolsai Lake Nature Walk</p>
+                            </div>
+                            <div class="flex gap-4 p-4 bg-slate-50 rounded-xl md:col-span-2">
+                                <span class="text-[10px] font-black text-[#b5905d] mt-1">21:30</span>
+                                <p class="text-sm">Traditional evening program: Songs & Campfire in guest house</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 3 -->
+                    <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 gold-gradient rounded-2xl flex items-center justify-center font-serif text-2xl text-[#1a2b44]">3</div>
+                            <h3 class="text-2xl font-serif text-[#1a2b44]">Canyons Expedition</h3>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex gap-4 p-4 bg-slate-50 rounded-xl">
+                                <span class="text-[10px] font-black text-[#b5905d] mt-1">10:00</span>
+                                <p class="text-sm">Black Canyon Observation</p>
+                            </div>
+                            <div class="flex gap-4 p-4 bg-slate-50 rounded-xl">
+                                <span class="text-[10px] font-black text-[#b5905d] mt-1">12:00</span>
+                                <p class="text-sm">Moon Canyon & Charyn Vistas</p>
+                            </div>
+                            <div class="flex gap-4 p-4 bg-slate-50 rounded-xl">
+                                <span class="text-[10px] font-black text-[#b5905d] mt-1">13:30</span>
+                                <p class="text-sm">Free time at Charyn Canyon</p>
+                            </div>
+                            <div class="flex gap-4 p-4 bg-slate-50 rounded-xl">
+                                <span class="text-[10px] font-black text-[#b5905d] mt-1">21:00</span>
+                                <p class="text-sm">Arrival & Drop-off in Almaty</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inclusions / Exclusions Section -->
+    <section class="py-24 bg-[#1a2b44] text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                <!-- Inclusions -->
+                <div>
+                    <h2 class="text-4xl font-serif mb-12 flex items-center gap-4">
+                        What's Included <span class="h-px bg-[#b5905d]/30 flex-1"></span>
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex gap-3 items-start">
+                            <i data-lucide="check" class="text-[#b5905d] mt-1"></i>
+                            <span class="text-sm text-white/70">Full Roundtrip Transport</span>
+                        </div>
+                        <div class="flex gap-3 items-start">
+                            <i data-lucide="check" class="text-[#b5905d] mt-1"></i>
+                            <span class="text-sm text-white/70">Guest House Accommodation</span>
+                        </div>
+                        <div class="flex gap-3 items-start">
+                            <i data-lucide="check" class="text-[#b5905d] mt-1"></i>
+                            <span class="text-sm text-white/70">Local Meals (Breakfast & Dinner)</span>
+                        </div>
+                        <div class="flex gap-3 items-start">
+                            <i data-lucide="check" class="text-[#b5905d] mt-1"></i>
+                            <span class="text-sm text-white/70">Private Taxi to Kaindy</span>
+                        </div>
+                        <div class="flex gap-3 items-start">
+                            <i data-lucide="check" class="text-[#b5905d] mt-1"></i>
+                            <span class="text-sm text-white/70">Environmental & Site Fees</span>
+                        </div>
+                        <div class="flex gap-3 items-start">
+                            <i data-lucide="check" class="text-[#b5905d] mt-1"></i>
+                            <span class="text-sm text-white/70">Cable Car Ride Experience</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exclusions -->
+                <div>
+                    <h2 class="text-4xl font-serif mb-12 flex items-center gap-4">
+                        Exclusions <span class="h-px bg-white/10 flex-1"></span>
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex gap-3 items-start opacity-60">
+                            <i data-lucide="x" class="text-red-400 mt-1"></i>
+                            <span class="text-sm">International Airfare</span>
+                        </div>
+                        <div class="flex gap-3 items-start opacity-60">
+                            <i data-lucide="x" class="text-red-400 mt-1"></i>
+                            <span class="text-sm">Visa Fees (Quoted separately)</span>
+                        </div>
+                        <div class="flex gap-3 items-start opacity-60">
+                            <i data-lucide="x" class="text-red-400 mt-1"></i>
+                            <span class="text-sm">Travel Insurance</span>
+                        </div>
+                        <div class="flex gap-3 items-start opacity-60">
+                            <i data-lucide="x" class="text-red-400 mt-1"></i>
+                            <span class="text-sm">Lunch (Daily budget ~₱500)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking CTA / Footer Area -->
+    <section class="py-24 bg-white">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-5xl font-serif text-[#1a2b44] mb-8">Ready to Summit?</h2>
+            <p class="text-slate-500 mb-12 max-w-lg mx-auto leading-relaxed">
+                Our travel experts are standing by to help you customize your dream Kazakhstan expedition. Connect with us for a personalized quote.
+            </p>
+            
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                <input type="text" placeholder="Full Name" class="px-8 py-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-[#b5905d]">
+                <input type="email" placeholder="Email Address" class="px-8 py-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-[#b5905d]">
+                <textarea placeholder="Message / Special Requests" class="md:col-span-2 px-8 py-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-[#b5905d] h-32"></textarea>
+                <button class="md:col-span-2 gold-gradient text-[#1a2b44] py-5 rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl hover:scale-[1.02] transition-transform">
+                    Send Inquiry
+                </button>
+            </form>
+            
+            <div class="flex justify-center gap-12 text-[#1a2b44]/40">
+                <div class="text-center">
+                    <p class="text-[10px] font-black uppercase tracking-widest mb-1">Email</p>
+                    <p class="text-sm font-medium">concierge@compasspeak.com</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[10px] font-black uppercase tracking-widest mb-1">Office</p>
+                    <p class="text-sm font-medium">BGC, Metro Manila</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-[#1a2b44] border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-3">
+                <i data-lucide="compass" class="text-[#b5905d] w-5 h-5"></i>
+                <span class="text-lg font-bold text-white tracking-tighter">Compass<span class="text-[#b5905d]">Peak</span></span>
+            </div>
+            <p class="text-[10px] text-white/30 uppercase tracking-[0.2em]">&copy; 2026 CompassPeak Travel & Tours. All Rights Reserved.</p>
+            <div class="flex gap-6">
+                <i data-lucide="instagram" class="w-4 h-4 text-white/40 hover:text-[#b5905d] cursor-pointer"></i>
+                <i data-lucide="facebook" class="w-4 h-4 text-white/40 hover:text-[#b5905d] cursor-pointer"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Handle Navbar Scroll Effect
+        const nav = document.getElementById('main-nav');
+        const logoText = document.querySelectorAll('.logo-text');
+        const logoSubtext = document.querySelector('.logo-subtext');
+        const navLinks = document.querySelector('.nav-links');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('nav-scrolled');
+                logoText.forEach(el => el.classList.remove('text-white'));
+                logoText.forEach(el => el.classList.add('text-[#1a2b44]'));
+                logoSubtext.classList.remove('text-white/60');
+                logoSubtext.classList.add('text-slate-400');
+                navLinks.classList.remove('text-white');
+                navLinks.classList.add('text-[#1a2b44]');
+            } else {
+                nav.classList.remove('nav-scrolled');
+                logoText.forEach(el => el.classList.add('text-white'));
+                logoText.forEach(el => el.classList.remove('text-[#1a2b44]'));
+                logoSubtext.classList.add('text-white/60');
+                logoSubtext.classList.remove('text-slate-400');
+                navLinks.classList.add('text-white');
+                navLinks.classList.remove('text-[#1a2b44]');
+            }
+        });
+    </script>
+</body>
+</html>

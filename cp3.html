@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompassPeak | Curating Extraordinary Horizons</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --navy: #1a2b44;
+            --gold: #b5905d;
+            --gold-light: #d4b483;
+        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; background-color: #fcfcfc; }
+        .font-serif { font-family: 'Marcellus', serif; }
+        
+        .gold-gradient {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+        }
+        
+        .nav-scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 0;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+        }
+
+        .destination-card:hover .dest-overlay { opacity: 1; transform: translateY(0); }
+        .tab-active { border-bottom: 3px solid var(--gold); color: var(--navy); font-weight: 800; }
+        
+        .itinerary-scroll::-webkit-scrollbar { height: 4px; }
+        .itinerary-scroll::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+    </style>
+</head>
+<body class="text-[#1a2b44]">
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed w-full z-50 transition-all duration-500 py-6 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-[#1a2b44] rounded-full flex items-center justify-center border border-[#b5905d]/30">
+                    <i data-lucide="compass" class="text-[#b5905d] w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-bold tracking-tighter text-white logo-text">Compass<span class="text-[#b5905d]">Peak</span></span>
+                    <p class="text-[8px] uppercase tracking-[0.4em] text-white/60 logo-subtext">Travel & Tours</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-10 text-white nav-links transition-colors">
+                <a href="#featured" class="text-[10px] font-bold uppercase tracking-widest hover:text-[#b5905d]">Our Collections</a>
+                <a href="#how-it-works" class="text-[10px] font-bold uppercase tracking-widest hover:text-[#b5905d]">Why Us</a>
+                <button class="gold-gradient text-[#1a2b44] px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:brightness-110 transition-all">
+                    Get a Quote
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover" alt="Adventure Background">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#fcfcfc]"></div>
+        </div>
+        <div class="relative z-10 text-center px-6 mt-20">
+            <h1 class="text-5xl md:text-7xl font-serif text-white mb-4">Discover the World with <br><span class="text-transparent bg-clip-text gold-gradient">CompassPeak</span></h1>
+            <p class="text-white/80 text-lg font-light tracking-wide max-w-xl mx-auto">From the peaks of Almaty to the vibrant streets of Singapore.</p>
+        </div>
+    </section>
+
+    <!-- Destination Filter / Featured Packages -->
+    <section id="featured" class="py-20 px-6 -mt-24 relative z-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="filterDest('all')" class="px-6 py-2 rounded-full border border-[#1a2b44]/10 bg-white shadow-sm text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-colors">All Packages</button>
+                <button onclick="filterDest('central-asia')" class="px-6 py-2 rounded-full border border-[#1a2b44]/10 bg-white shadow-sm text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-colors">Central Asia</button>
+                <button onclick="filterDest('southeast-asia')" class="px-6 py-2 rounded-full border border-[#1a2b44]/10 bg-white shadow-sm text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-colors">Southeast Asia</button>
+                <button onclick="filterDest('east-asia')" class="px-6 py-2 rounded-full border border-[#1a2b44]/10 bg-white shadow-sm text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-colors">East Asia</button>
+            </div>
+
+            <!-- Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Almaty -->
+                <div class="group relative overflow-hidden rounded-[2rem] bg-white shadow-xl shadow-slate-200/50" data-category="central-asia">
+                    <div class="h-64 overflow-hidden">
+                        <img src="kazaks-alamaty.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[9px] font-black uppercase tracking-widest text-[#b5905d] mb-2 block">Kazakhstan</span>
+                        <h3 class="text-xl font-serif mb-4">Almaty Land Arrangement</h3>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-[10px] text-slate-400 uppercase font-bold">Starting At</p>
+                                <p class="text-2xl font-black">₱10,999</p>
+                            </div>
+                            <button class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center hover:bg-[#1a2b44] hover:text-white transition-colors">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vietnam -->
+                <div class="group relative overflow-hidden rounded-[2rem] bg-white shadow-xl shadow-slate-200/50" data-category="southeast-asia">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[9px] font-black uppercase tracking-widest text-[#b5905d] mb-2 block">Vietnam Rose</span>
+                        <h3 class="text-xl font-serif mb-4">Hanoi & Halong Bay</h3>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-[10px] text-slate-400 uppercase font-bold">Full Package</p>
+                                <p class="text-2xl font-black">₱39,999</p>
+                            </div>
+                            <button class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center hover:bg-[#1a2b44] hover:text-white transition-colors">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Singapore -->
+                <div class="group relative overflow-hidden rounded-[2rem] bg-white shadow-xl shadow-slate-200/50" data-category="southeast-asia">
+                    <div class="h-64 overflow-hidden">
+                        <img src="singapore.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[9px] font-black uppercase tracking-widest text-[#b5905d] mb-2 block">City Special</span>
+                        <h3 class="text-xl font-serif mb-4">Great Singapore Tour</h3>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-[10px] text-slate-400 uppercase font-bold">Downpayment</p>
+                                <p class="text-2xl font-black">₱17,000</p>
+                            </div>
+                            <button class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center hover:bg-[#1a2b44] hover:text-white transition-colors">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Taiwan -->
+                <div class="group relative overflow-hidden rounded-[2rem] bg-white shadow-xl shadow-slate-200/50" data-category="east-asia">
+                    <div class="h-64 overflow-hidden">
+                        <img src="taichung.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[9px] font-black uppercase tracking-widest text-[#b5905d] mb-2 block">4D3N Adventure</span>
+                        <h3 class="text-xl font-serif mb-4">Taichung & Taipei</h3>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-[10px] text-slate-400 uppercase font-bold">Starting At</p>
+                                <p class="text-2xl font-black">₱27,999</p>
+                            </div>
+                            <button class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center hover:bg-[#1a2b44] hover:text-white transition-colors">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support / WhatsApp CTA (Based on your "Stay Connected" image) -->
+    <section class="py-20 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-[#1a2b44] rounded-[3rem] overflow-hidden flex flex-col md:flex-row shadow-2xl">
+                <div class="md:w-1/2 p-12 md:p-20 text-white flex flex-col justify-center">
+                    <h2 class="text-4xl font-serif mb-6">Stay Connected With Us</h2>
+                    <p class="text-white/60 mb-10 leading-relaxed">Got questions about your next destination? We've made it easier for you to reach our concierge team directly on WhatsApp.</p>
+                    
+                    <div class="flex items-center gap-6 mb-8 bg-white/5 p-6 rounded-2xl border border-white/10">
+                        <div class="w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg shadow-[#25D366]/20">
+                            <i data-lucide="phone" class="text-white w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black uppercase tracking-[0.2em] text-[#b5905d]">WhatsApp Official</p>
+                            <p class="text-2xl font-bold tracking-tight">+63-919-0966-082</p>
+                        </div>
+                    </div>
+                    <button class="w-fit bg-white text-[#1a2b44] px-10 py-4 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-[#b5905d] hover:text-white transition-all">
+                        Message Us Now
+                    </button>
+                </div>
+                <div class="md:w-1/2 relative min-h-[400px]">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#1a2b44] to-transparent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-24 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="text-center">
+            <div class="w-16 h-16 bg-white shadow-lg rounded-2xl flex items-center justify-center mx-auto mb-6 text-[#b5905d]">
+                <i data-lucide="shield-check" class="w-8 h-8"></i>
+            </div>
+            <h4 class="text-lg font-bold mb-3">Licensed Agency</h4>
+            <p class="text-sm text-slate-500">Fully accredited travel & tour operator based in the Philippines.</p>
+        </div>
+        <div class="text-center">
+            <div class="w-16 h-16 bg-white shadow-lg rounded-2xl flex items-center justify-center mx-auto mb-6 text-[#b5905d]">
+                <i data-lucide="gem" class="w-8 h-8"></i>
+            </div>
+            <h4 class="text-lg font-bold mb-3">Premium Service</h4>
+            <p class="text-sm text-slate-500">Bespoke itineraries designed for discerning travelers.</p>
+        </div>
+        <div class="text-center">
+            <div class="w-16 h-16 bg-white shadow-lg rounded-2xl flex items-center justify-center mx-auto mb-6 text-[#b5905d]">
+                <i data-lucide="users" class="w-8 h-8"></i>
+            </div>
+            <h4 class="text-lg font-bold mb-3">Expert Guides</h4>
+            <p class="text-sm text-slate-500">Multilingual local experts to guide your journey.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 py-16 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 bg-[#1a2b44] rounded-full flex items-center justify-center">
+                        <i data-lucide="compass" class="text-[#b5905d] w-5 h-5"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tighter">Compass<span class="text-[#b5905d]">Peak</span></span>
+                </div>
+                <p class="text-[10px] uppercase font-black tracking-widest text-slate-400">© 2026 CompassPeak Travel & Tours</p>
+            </div>
+            <div class="flex gap-10">
+                <a href="#" class="text-[10px] font-black uppercase tracking-widest text-[#1a2b44] hover:text-[#b5905d]">Terms</a>
+                <a href="#" class="text-[10px] font-black uppercase tracking-widest text-[#1a2b44] hover:text-[#b5905d]">Privacy</a>
+                <a href="#" class="text-[10px] font-black uppercase tracking-widest text-[#1a2b44] hover:text-[#b5905d]">Careers</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Navbar Scroll Logic
+        const nav = document.getElementById('main-nav');
+        const logoText = document.querySelectorAll('.logo-text');
+        const logoSubtext = document.querySelector('.logo-subtext');
+        const navLinks = document.querySelector('.nav-links');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('nav-scrolled');
+                logoText.forEach(el => el.classList.add('text-[#1a2b44]'));
+                logoText.forEach(el => el.classList.remove('text-white'));
+                logoSubtext.classList.remove('text-white/60');
+                logoSubtext.classList.add('text-slate-400');
+                navLinks.classList.add('text-[#1a2b44]');
+                navLinks.classList.remove('text-white');
+            } else {
+                nav.classList.remove('nav-scrolled');
+                logoText.forEach(el => el.classList.remove('text-[#1a2b44]'));
+                logoText.forEach(el => el.classList.add('text-white'));
+                logoSubtext.classList.add('text-white/60');
+                logoSubtext.classList.remove('text-slate-400');
+                navLinks.classList.remove('text-[#1a2b44]');
+                navLinks.classList.add('text-white');
+            }
+        });
+
+        // Simple Filter Logic
+        window.filterDest = function(category) {
+            const cards = document.querySelectorAll('[data-category]');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        };
+    </script>
+</body>
+</html>

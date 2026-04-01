@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompassPeak | Your Trusted Travel Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --navy: #1a2b44;
+            --gold: #b5905d;
+            --gold-light: #d4b483;
+        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; background-color: #fcfcfc; }
+        .font-serif { font-family: 'Marcellus', serif; }
+        
+        .gold-gradient {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+        }
+        
+        .nav-scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 0;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+        }
+
+        .tab-active { border-bottom: 3px solid var(--gold); color: var(--navy); font-weight: 800; }
+        
+        .bg-navy { background-color: var(--navy); }
+        .text-gold { color: var(--gold); }
+        .border-gold { border-color: var(--gold); }
+    </style>
+</head>
+<body class="text-[#1a2b44]">
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed w-full z-50 transition-all duration-500 py-6 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="cplogo1.png" alt="" class="w-20 h-20">
+                <!-- <div class="w-10 h-10 bg-[#1a2b44] rounded-full flex items-center justify-center border border-[#b5905d]/30">
+                    <i data-lucide="compass" class="text-[#b5905d] w-6 h-6"></i>
+                </div> -->
+                <div>
+                    <!-- <img src="cplogo2.png" alt="" class="h-20"> -->
+                    <span class="text-2xl font-bold tracking-tighter text-white logo-text">Compass<span class="text-[#b5905d]">Peak</span></span>
+                    <p class="text-[10px] uppercase tracking-[0.4em] text-[#b5905d]">- Travel & Tours - </p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-10 text-white nav-links transition-colors">
+                <a href="#about" class="text-[10px] font-bold uppercase tracking-widest hover:text-[#b5905d]">About Us</a>
+                <a href="#featured" class="text-[10px] font-bold uppercase tracking-widest hover:text-[#b5905d]">Destinations</a>
+                <a href="#services" class="text-[10px] font-bold uppercase tracking-widest hover:text-[#b5905d]">Services</a>
+                <button class="gold-gradient text-[#1a2b44] px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:brightness-110 transition-all">
+                    Contact Us
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover" alt="Adventure Background">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#fcfcfc]"></div>
+        </div>
+        <div class="relative z-10 text-center px-6 mt-20">
+            <p class="text-white/60 text-[10px] font-black uppercase tracking-[0.5em] mb-4">Established Excellence</p>
+            <h1 class="text-5xl md:text-7xl font-serif text-white mb-4">Curating Extraordinary <br><span class="text-transparent bg-clip-text gold-gradient">Horizons</span></h1>
+            <p class="text-white/80 text-lg font-light tracking-wide max-w-xl mx-auto">Your journey is more than reaching a destination—it's about the memories created along the way.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 relative">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-gold opacity-30"></div>
+                    <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&q=80&w=1000" class="rounded-[3rem] shadow-2xl relative z-10" alt="About CompassPeak">
+                    <div class="absolute -bottom-10 -right-10 bg-navy p-8 rounded-[2rem] text-white shadow-xl z-20 hidden md:block">
+                        <p class="text-3xl font-serif text-gold">100%</p>
+                        <p class="text-[9px] uppercase tracking-widest font-bold">Reliable Support</p>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <span class="text-[10px] font-black uppercase tracking-[0.4em] text-gold mb-4 block">About Us</span>
+                    <h2 class="text-4xl font-serif mb-6 leading-tight">Every Journey Should Be Exciting, Seamless, and Unforgettable.</h2>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        At CompassPeak Travel & Tours, we believe travel is more than just reaching a destination—it’s about discovering new places, creating meaningful experiences, and making memories that last a lifetime.
+                    </p>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        As your trusted travel specialist, we are committed to helping travelers explore the world with ease and confidence. From planning your itinerary to arranging flights and accommodations, we ensure that every detail of your trip is handled with care and professionalism.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8 pt-8 border-t border-slate-100">
+                        <div>
+                            <h4 class="font-bold text-navy mb-2">Our Mission</h4>
+                            <p class="text-xs text-slate-500 italic">"Delivering exceptional travel experiences by providing reliable, personalized, and hassle-free services."</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy mb-2">Our Vision</h4>
+                            <p class="text-xs text-slate-500 italic">"To be the trusted travel partner that inspires people to explore the world with confidence."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services (What We Do) -->
+    <section id="services" class="py-24 bg-slate-50 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-[10px] font-black uppercase tracking-[0.4em] text-gold mb-4 block">What We Do</span>
+                <h2 class="text-4xl font-serif mb-4">Comprehensive Travel Services</h2>
+                <div class="w-20 h-1 gold-gradient mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all border border-slate-100 group">
+                    <div class="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-navy group-hover:text-gold transition-colors">
+                        <i data-lucide="luggage" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Vacation Packages</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Carefully curated travel packages that combine comfort, adventure, and value—perfect for individuals, couples, families, and groups.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all border border-slate-100 group">
+                    <div class="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-navy group-hover:text-gold transition-colors">
+                        <i data-lucide="plane-takeoff" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Flights + Hotel</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">We assist with flight reservations and hotel accommodations to ensure your travel experience is convenient and stress-free.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all border border-slate-100 group">
+                    <div class="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-navy group-hover:text-gold transition-colors">
+                        <i data-lucide="map-pin" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Personalized Itineraries</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Every traveler is unique. We create customized plans based on your preferences, schedule, and budget.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Grid -->
+    <section id="featured" class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <span class="text-[10px] font-black uppercase tracking-[0.4em] text-gold mb-4 block">Destinations</span>
+                    <h2 class="text-4xl font-serif">Explore Our Collections</h2>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterDest('all')" class="px-6 py-2 rounded-full border border-navy/10 text-[9px] font-black uppercase tracking-widest hover:bg-navy hover:text-white transition-all">All</button>
+                    <button onclick="filterDest('central-asia')" class="px-6 py-2 rounded-full border border-navy/10 text-[9px] font-black uppercase tracking-widest hover:bg-navy hover:text-white transition-all">Central Asia</button>
+                    <button onclick="filterDest('southeast-asia')" class="px-6 py-2 rounded-full border border-navy/10 text-[9px] font-black uppercase tracking-widest hover:bg-navy hover:text-white transition-all">Southeast Asia</button>
+                    <button onclick="filterDest('east-asia')" class="px-6 py-2 rounded-full border border-navy/10 text-[9px] font-black uppercase tracking-widest hover:bg-navy hover:text-white transition-all">East Asia</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Almaty -->
+                <div class="group relative overflow-hidden rounded-[2rem] bg-slate-50" data-category="central-asia">
+                    <div class="h-64 overflow-hidden">
+                        <img src="kazaks-alamaty.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[9px] font-black uppercase tracking-widest text-gold mb-2 block">Kazakhstan</span>
+                        <h3 class="text-lg font-serif mb-4">Almaty Land Arrangement</h3>
+                        <p class="text-xl font-black mb-4">₱10,999</p>
+                        <button class="text-[10px] font-black uppercase tracking-widest text-navy border-b border-navy/20 pb-1 group-hover:border-gold transition-all">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Vietnam -->
+                <div class="group relative overflow-hidden rounded-[2rem] bg-slate-50" data-category="southeast-asia">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[9px] font-black uppercase tracking-widest text-gold mb-2 block">Vietnam</span>
+                        <h3 class="text-lg font-serif mb-4">Hanoi & Halong Bay</h3>
+                        <p class="text-xl font-black mb-4">₱39,999</p>
+                        <button class="text-[10px] font-black uppercase tracking-widest text-navy border-b border-navy/20 pb-1 group-hover:border-gold transition-all">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Singapore -->
+                <div class="group relative overflow-hidden rounded-[2rem] bg-slate-50" data-category="southeast-asia">
+                    <div class="h-64 overflow-hidden">
+                        <img src="singapore.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[9px] font-black uppercase tracking-widest text-gold mb-2 block">Singapore</span>
+                        <h3 class="text-lg font-serif mb-4">City Highlights Tour</h3>
+                        <p class="text-xl font-black mb-4">₱17,000 <span class="text-[10px] font-normal text-slate-400 italic"> (Downpayment)</span></p>
+                        <button class="text-[10px] font-black uppercase tracking-widest text-navy border-b border-navy/20 pb-1 group-hover:border-gold transition-all">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Taiwan -->
+                <div class="group relative overflow-hidden rounded-[2rem] bg-slate-50" data-category="east-asia">
+                    <div class="h-64 overflow-hidden">
+                        <img src="taichung.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[9px] font-black uppercase tracking-widest text-gold mb-2 block">Taiwan</span>
+                        <h3 class="text-lg font-serif mb-4">Taichung & Taipei</h3>
+                        <p class="text-xl font-black mb-4">₱27,999</p>
+                        <button class="text-[10px] font-black uppercase tracking-widest text-navy border-b border-navy/20 pb-1 group-hover:border-gold transition-all">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-24 bg-navy text-white px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                <div>
+                    <span class="text-[10px] font-black uppercase tracking-[0.4em] text-gold mb-4 block">Experience Excellence</span>
+                    <h2 class="text-4xl font-serif mb-8 leading-tight">Why Choose CompassPeak?</h2>
+                    <p class="text-white/60 mb-12 max-w-md">We don’t just book trips—we help create unforgettable adventures with 24/7 assistance.</p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center shrink-0">
+                                <i data-lucide="sparkles" class="text-gold w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Personalized Travel Planning</h4>
+                                <p class="text-xs text-white/50">Every trip is designed based on your preferences, travel style, and budget.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center shrink-0">
+                                <i data-lucide="clock" class="text-gold w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Hassle-Free Experience</h4>
+                                <p class="text-xs text-white/50">We handle the details so you can focus on enjoying your journey.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center shrink-0">
+                                <i data-lucide="award" class="text-gold w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Trusted Assistance</h4>
+                                <p class="text-xs text-white/50">Our team is dedicated to providing reliable support from start to finish.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white/5 rounded-[3rem] p-12 border border-white/10 relative overflow-hidden flex items-center">
+                    <div class="relative z-10">
+                        <i data-lucide="quote" class="text-gold w-12 h-12 mb-8 opacity-50"></i>
+                        <p class="text-2xl font-serif leading-relaxed mb-8">"Let’s step into every adventure together. We are here to create the perfect travel experience tailored to your needs."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-1 gold-gradient"></div>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-gold">CompassPeak Concierge Team</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-serif mb-6">Ready to Start Your Adventure?</h2>
+            <p class="text-slate-500 mb-10 max-w-xl mx-auto italic">"Our mission is to deliver exceptional travel experiences by providing reliable, personalized, and hassle-free travel services."</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="bg-navy text-white px-10 py-4 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-gold transition-all">
+                    Inquire via WhatsApp
+                </button>
+                <button class="border border-navy text-navy px-10 py-4 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-navy hover:text-white transition-all">
+                    Browse All Packages
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <!-- <div class="w-8 h-8 bg-navy rounded-full flex items-center justify-center">
+                            <i data-lucide="compass" class="text-gold w-5 h-5"></i>
+                        </div>
+                        <span class="text-xl font-bold tracking-tighter">Compass<span class="text-gold">Peak</span></span> -->
+                        <img src="cplogo1.png" alt="" class="w-20 h-20">
+                        <!-- <div class="w-10 h-10 bg-[#1a2b44] rounded-full flex items-center justify-center border border-[#b5905d]/30">
+                            <i data-lucide="compass" class="text-[#b5905d] w-6 h-6"></i>
+                        </div> -->
+                        <div>
+                            <!-- <img src="cplogo2.png" alt="" class="h-20"> -->
+                            <span class="text-2xl font-bold tracking-tighter text-white logo-text">Compass<span class="text-[#b5905d]">Peak</span></span>
+                            <p class="text-[10px] uppercase tracking-[0.4em] text-[#b5905d]">- Travel & Tours - </p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-sm text-slate-500 max-w-xs leading-relaxed">Making every journey exciting, seamless, and unforgettable. Your trusted travel specialist in the Philippines.</p>
+                </div>
+                 <div>
+                    <h4 class="font-bold mb-6 uppercase text-[10px] tracking-widest">Connect</h4>
+                    <p class="text-sm text-slate-500 mb-2">Phone: +63-919-096-6082 / +63-976-525-6517</p>
+                    <p class="text-sm text-slate-500 mb-2">WhatsApp: +63-919-0966-082</p>
+                    <p class="text-sm text-slate-500 mb-2">Facebook: CompassPeak Travel</p>
+                    <p class="text-sm text-slate-500">Email: cpineda@compasspeak.ph</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase text-[10px] tracking-widest">Quick Links</h4>
+                    <ul class="text-sm text-slate-500 space-y-3">
+                        <li><a href="#about" class="hover:text-gold transition-colors">About Us</a></li>
+                        <li><a href="#featured" class="hover:text-gold transition-colors">Destinations</a></li>
+                        <li><a href="#services" class="hover:text-gold transition-colors">What We Do</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-50 text-center">
+                <p class="text-[9px] uppercase font-black tracking-widest text-slate-400">© 2026 CompassPeak Travel & Tours. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Navbar Scroll Logic
+        const nav = document.getElementById('main-nav');
+        const logoText = document.querySelectorAll('.logo-text');
+        const logoSubtext = document.querySelector('.logo-subtext');
+        const navLinks = document.querySelector('.nav-links');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                nav.classList.add('nav-scrolled');
+                logoText.forEach(el => { el.classList.add('text-navy'); el.classList.remove('text-white'); });
+                logoSubtext.classList.remove('text-white/60');
+                logoSubtext.classList.add('text-slate-400');
+                navLinks.classList.add('text-navy');
+                navLinks.classList.remove('text-white');
+            } else {
+                nav.classList.remove('nav-scrolled');
+                logoText.forEach(el => { el.classList.remove('text-navy'); el.classList.add('text-white'); });
+                logoSubtext.classList.add('text-white/60');
+                logoSubtext.classList.remove('text-slate-400');
+                navLinks.classList.remove('text-navy');
+                navLinks.classList.add('text-white');
+            }
+        });
+
+        // Filter Destinations
+        window.filterDest = function(category) {
+            const cards = document.querySelectorAll('[data-category]');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        };
+    </script>
+</body>
+</html>
