@@ -56,6 +56,21 @@
             opacity: 1;
         }
 
+        /* Lightbox (Zoom View) */
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(0,0,0,0.9);
+            cursor: zoom-out;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        #lightbox.active { display: flex; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
         /* Custom Scrollbar for Modal */
         .modal-scroll::-webkit-scrollbar { width: 6px; }
         .modal-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
@@ -85,9 +100,9 @@
                 <a href="#about" class="text-[10px] font-bold uppercase tracking-widest hover:text-[#b5905d]">About Us</a>
                 <a href="#featured" class="text-[10px] font-bold uppercase tracking-widest hover:text-[#b5905d]">Destinations</a>
                 <a href="#services" class="text-[10px] font-bold uppercase tracking-widest hover:text-[#b5905d]">Services</a>
-                <button class="gold-gradient text-[#1a2b44] px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:brightness-110 transition-all">
+                <a href="#contact" class="gold-gradient text-[#1a2b44] px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:brightness-110 transition-all">
                     Contact Us
-                </button>
+                </a>
             </div>
         </div>
     </nav>
@@ -101,7 +116,7 @@
         <div class="relative z-10 text-center px-6 mt-20">
             <p class="text-white/60 text-[10px] font-black uppercase tracking-[0.5em] mb-4">Established Excellence</p>
             <h1 class="text-5xl md:text-7xl font-serif text-white mb-4">Curating Extraordinary <br><span class="text-transparent bg-clip-text gold-gradient">Horizons</span></h1>
-            <p class="text-white/80 text-lg font-light tracking-wide max-w-xl mx-auto">Your journey is more than reaching a destination—it's about the memories created along the way.</p>
+            <p class="text-white text-lg font-light tracking-wide max-w-xl mx-auto">Your journey is more than reaching a destination—it's about the memories created along the way.</p>
         </div>
     </section>
 
@@ -218,7 +233,7 @@
                         <span class="text-[9px] font-black uppercase tracking-widest text-gold mb-2 block">Vietnam</span>
                         <h3 class="text-lg font-serif mb-4">Hanoi & Halong Bay</h3>
                         <p class="text-xl font-black mb-4">₱39,999</p>
-                        <button class="text-[10px] font-black uppercase tracking-widest text-navy border-b border-navy/20 pb-1 group-hover:border-gold transition-all">View Details</button>
+                        <button  onclick="openModal('vietnam')" class="text-[10px] font-black uppercase tracking-widest text-navy border-b border-navy/20 pb-1 group-hover:border-gold transition-all">View Details</button>
                     </div>
                 </div>
 
@@ -231,7 +246,7 @@
                         <span class="text-[9px] font-black uppercase tracking-widest text-gold mb-2 block">Singapore</span>
                         <h3 class="text-lg font-serif mb-4">City Highlights Tour</h3>
                         <p class="text-xl font-black mb-4">₱17,000 <span class="text-[10px] font-normal text-slate-400 italic"> (Downpayment)</span></p>
-                        <button class="text-[10px] font-black uppercase tracking-widest text-navy border-b border-navy/20 pb-1 group-hover:border-gold transition-all">View Details</button>
+                        <button  onclick="openModal('singapore')" class="text-[10px] font-black uppercase tracking-widest text-navy border-b border-navy/20 pb-1 group-hover:border-gold transition-all">View Details</button>
                     </div>
                 </div>
 
@@ -244,7 +259,7 @@
                         <span class="text-[9px] font-black uppercase tracking-widest text-gold mb-2 block">Taiwan</span>
                         <h3 class="text-lg font-serif mb-4">Taichung & Taipei</h3>
                         <p class="text-xl font-black mb-4">₱27,999</p>
-                        <button class="text-[10px] font-black uppercase tracking-widest text-navy border-b border-navy/20 pb-1 group-hover:border-gold transition-all">View Details</button>
+                        <button onclick="openModal('taiwan')" class="text-[10px] font-black uppercase tracking-widest text-navy border-b border-navy/20 pb-1 group-hover:border-gold transition-all">View Details</button>
                     </div>
                 </div>
             </div>
@@ -320,73 +335,98 @@
         </div>
     </section>
 
-    <!-- Modal System -->
-    <div id="dest-modal" class="fixed inset-0 z-[100] modal-backdrop flex items-center justify-center p-4 md:p-10">
-        <div class="modal-content relative bg-white w-full max-w-6xl h-full max-h-[90vh] rounded-[3rem] overflow-hidden shadow-2xl flex flex-col md:flex-row">
-            <!-- Close Button -->
-            <button onclick="closeModal()" class="absolute top-6 right-6 z-[110] bg-white/90 backdrop-blur p-3 rounded-full shadow-lg hover:bg-gold hover:text-white transition-all">
-                <i data-lucide="x" class="w-6 h-6"></i>
+    <!-- Refined Modal -->
+    <div id="dest-modal" class="fixed inset-0 z-[100] modal-backdrop flex items-center justify-center p-4">
+        <div class="modal-content relative bg-white w-full max-w-7xl h-full max-h-[92vh] rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col md:flex-row">
+            
+            <!-- Close Trigger -->
+            <button onclick="closeModal()" class="absolute top-6 right-6 z-[110] bg-navy text-white p-3 rounded-full hover:bg-gold transition-all shadow-xl">
+                <i data-lucide="x" class="w-5 h-5"></i>
             </button>
 
-            <!-- Image/Flyer Area -->
-            <div class="md:w-3/5 bg-slate-100 overflow-y-auto modal-scroll p-4 md:p-8">
-                <img id="modal-flyer" src="" alt="Tour Itinerary" class="w-full rounded-2xl shadow-xl">
-            </div>
-
-            <!-- Content Area -->
-            <div class="md:w-2/5 flex flex-col h-full bg-white border-l border-slate-100">
-                <div class="p-8 md:p-12 overflow-y-auto modal-scroll flex-grow">
-                    <span id="modal-tag" class="text-[10px] font-black uppercase tracking-[0.4em] text-gold mb-4 block">Destination</span>
-                    <h2 id="modal-title" class="text-4xl font-serif text-navy mb-4 leading-tight">Loading...</h2>
-                    <p id="modal-price" class="text-2xl font-black text-navy mb-8">₱0.00</p>
-                    
-                    <div id="modal-description" class="space-y-6 mb-10">
-                        <div class="flex gap-4">
-                            <div class="w-8 h-8 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">
-                                <i data-lucide="calendar" class="w-4 h-4 text-gold"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-[11px] font-black uppercase tracking-widest text-navy mb-1">Duration</h4>
-                                <p id="modal-duration" class="text-sm text-slate-500">Flexible Dates</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="w-8 h-8 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">
-                                <i data-lucide="info" class="w-4 h-4 text-gold"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-[11px] font-black uppercase tracking-widest text-navy mb-1">Highlights</h4>
-                                <p class="text-sm text-slate-500">Full Itinerary, English Speaking Guide, and curated local experiences.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-slate-50 p-6 rounded-3xl border border-slate-100 mb-8">
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Official Contact</p>
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white shadow-lg">
-                                <i data-lucide="message-circle" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm font-bold text-navy">+63 919 0966 082</p>
-                                <p class="text-[9px] text-slate-400 uppercase tracking-widest">WhatsApp / Viber Available</p>
-                            </div>
+             <div class="md:w-1/2 bg-slate-100 overflow-y-auto modal-scroll p-4 md:p-12">
+                <div class="relative group flyer-cursor" onclick="openLightbox()">
+                    <img id="modal-flyer" src="" alt="Itinerary Flyer" class="w-full rounded-2xl shadow-2xl border border-slate-200 transition-transform duration-500 hover:scale-[1.01]">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 flex items-center justify-center transition-all opacity-0 group-hover:opacity-100">
+                        <div class="bg-white/90 px-6 py-3 rounded-full shadow-xl flex items-center gap-2">
+                            <i data-lucide="zoom-in" class="w-4 h-4 text-navy"></i>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-navy">Click to Zoom Flyer</span>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Footer Action -->
-                <div class="p-8 border-t border-slate-100 bg-white">
-                    <a href="https://wa.me/639190966082" target="_blank" class="block w-full bg-navy text-white text-center py-5 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-gold transition-all shadow-xl">
-                        Inquire This Package
+            <!-- Detailed Content Panel -->
+            <div class="md:w-1/2 flex flex-col bg-white h-full">
+                <div class="p-8 md:p-14 overflow-y-auto modal-scroll flex-grow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span id="modal-tag" class="text-[10px] font-black uppercase tracking-[0.4em] text-gold">Destination</span>
+                        <div class="h-[1px] flex-grow bg-slate-100"></div>
+                    </div>
+                    
+                    <h2 id="modal-title" class="text-4xl md:text-5xl font-serif text-navy mb-6 leading-tight">Destination</h2>
+                    
+                    <div class="flex items-center gap-6 mb-8 p-6 bg-slate-50 rounded-3xl border border-slate-100">
+                        <div>
+                            <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Starting From</p>
+                            <p id="modal-price" class="text-3xl font-black text-navy">₱0.00</p>
+                        </div>
+                        <div class="w-[1px] h-10 bg-slate-200"></div>
+                        <div>
+                            <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Stay Duration</p>
+                            <p id="modal-duration" class="text-lg font-bold text-navy">Flexible</p>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Description Area -->
+                    <div id="modal-desc-container" class="space-y-6">
+                        <div class="prose prose-slate">
+                            <p id="modal-intro" class="text-navy font-semibold italic text-lg mb-6"></p>
+                            
+                            <h4 class="text-[11px] font-black text-gold uppercase tracking-[0.3em] mb-4">Why Book This Journey?</h4>
+                            <ul id="modal-bullets" class="space-y-4">
+                                <!-- Dynamically filled -->
+                            </ul>
+                            
+                            <p id="modal-details" class="text-slate-600 mb-6"></p>
+                            
+                            <div id="modal-footer-text" class="mt-8 pt-8 border-t border-slate-100 text-sm text-slate-500 leading-relaxed">
+                                <!-- Dynamic CTA text -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hashtags -->
+                    <div id="modal-hashtags" class="mt-8 flex flex-wrap gap-2">
+                        <!-- Dynamically filled -->
+                    </div>
+                </div>
+
+                <!-- Footer CTA -->
+                <div class="p-8 md:p-10 border-t border-slate-100 bg-white flex flex-col sm:flex-row gap-4">
+                    <a id="modal-whatsapp" href="#" target="_blank" class="flex-grow bg-navy text-white text-center py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-gold transition-all shadow-lg flex items-center justify-center gap-3">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        Message on WhatsApp
                     </a>
+                    <button onclick="closeModal()" class="px-8 py-5 border border-slate-200 rounded-2xl font-bold text-[10px] uppercase tracking-widest hover:bg-slate-50 transition-all">
+                        Maybe Later
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
+        <!-- Lightbox for Flyer Zoom -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <button class="absolute top-8 right-8 text-white bg-white/10 p-4 rounded-full hover:bg-white/20">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <img id="lightbox-img" src="" class="max-h-[95vh] max-w-[95vw] object-contain shadow-2xl rounded-lg">
+        <p class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 text-[10px] font-bold uppercase tracking-widest">Click anywhere to close</p>
+    </div>
+
     <!-- Footer -->
-    <footer class="bg-white border-t border-slate-100 py-16 px-6">
+    <footer class="bg-white border-t border-slate-100 py-16 px-6" id="contact">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
                 <div>
@@ -469,47 +509,124 @@
             });
         };
 
-        const destinations = {
+        const data = {
             almaty: {
                 title: "Almaty Tour Kazakhstan",
                 price: "₱10,999",
-                tag: "Central Asia",
                 duration: "3 Days / 2 Nights",
+                tag: "Central Asia",
+                intro: "Discover the Hidden Gem of Central Asia — Almaty, Kazakhstan!",
+                details: "Ready for your next unforgettable adventure? Come and experience the breathtaking beauty of Almaty, where majestic mountains meet vibrant city life!",
+                bullets: [
+                    "Enjoy stunning views of snow-capped peaks",
+                    "Explore serene lakes and lush landscapes",
+                    "Experience a unique blend of modern culture and rich history",
+                    "Taste delicious local cuisine"
+                ],
+                closing: "Whether you're a nature lover, a thrill-seeker, or simply looking for a new destination to explore, Almaty has something for you! <strong>LIMITED SLOTS AVAILABLE!</strong>",
+                footerText: "Don’t miss out on this exclusive travel package — message us now for details and reservations! Send us a PM today and let’s make your dream trip happen!",
+                hashtags: ["TravelGoals", "AlmatyAdventure", "ExploreKazakhstan", "Wanderlust", "TravelNow", "compasspeak"],
                 flyer: "kazakstan.jpg"
             },
             vietnam: {
-                title: "Vietnam Rose: Hanoi & Halong Bay",
+                title: "Vietnam Rose: Hanoi & Halong",
                 price: "₱39,999",
-                tag: "Southeast Asia",
                 duration: "4 Days / 3 Nights",
-                flyer: "654434184_1263025565929192_7783591756501907793_n.jpg"
+                tag: "Southeast Asia",
+                intro: "Experience the timeless charm of Northern Vietnam!",
+                details: "From the bustling streets of Hanoi to the emerald waters of Halong Bay, experience a journey that blends tradition with natural wonder.",
+                bullets: [
+                    "Overnight luxury cruise in Halong Bay",
+                    "Authentic Vietnamese culinary tours",
+                    "Historical Old Quarter exploration",
+                    "English speaking expert guides"
+                ],
+                closing: "A perfect blend of relaxation and culture awaits you. <strong>SECURE YOUR SLOT NOW!</strong>",
+                footerText: "Ready for the Vietnam Rose experience? Contact us today to receive the full itinerary and booking guidelines.",
+                hashtags: ["VietnamTravel", "Hanoi", "HalongBay", "CruiseLife", "CompassPeak"],
+                flyer: "vietnam.jpg"
             },
             singapore: {
                 title: "Great Singapore City Experience",
                 price: "₱31,888",
-                tag: "Southeast Asia",
                 duration: "4 Days / 3 Nights",
-                flyer: "655321761_1266223308942751_5246450021544757828_n.jpg"
+                tag: "Southeast Asia",
+                intro: "Step into the future with our Singapore Getaway!",
+                details: "Explore the Lion City's modern marvels and diverse heritage. A world-class destination for families and solo travelers alike.",
+                bullets: [
+                    "Full Day Universal Studios Access",
+                    "Gardens by the Bay Cloud Forest visit",
+                    "Premium city center accommodation",
+                    "Roundtrip airport transfers included"
+                ],
+                closing: "The city of the future is calling. <strong>LIMITED AVAILABILITY FOR PEAK SEASONS!</strong>",
+                footerText: "Our Singapore packages sell out fast! PM us today for a personalized quote.",
+                hashtags: ["Singapore", "CityVibes", "FamilyTravel", "GardensByTheBay", "CompassPeak"],
+                flyer: "singapore1.jpg"
             },
             taiwan: {
                 title: "Taiwan Explorer: Taichung & Taipei",
                 price: "₱27,999",
-                tag: "East Asia",
                 duration: "4 Days / 3 Nights",
-                flyer: "657223280_1269750185256730_8585098407191318370_n.jpg"
+                tag: "East Asia",
+                intro: "Taste and See the Wonders of Taiwan!",
+                details: "Discover the perfect balance of mountain scenery in Taichung and the neon-lit excitement of Taipei's night markets.",
+                bullets: [
+                    "Visit Shifen and Jiufen Old Streets",
+                    "Taichung Flower Farm photo stops",
+                    "Taipei 101 observatory access",
+                    "Night market food hopping experience"
+                ],
+                closing: "Food, culture, and nature all in one trip. <strong>BOOK YOUR SLOT TODAY!</strong>",
+                footerText: "Taiwan is waiting for you! Send us a message for the latest schedule and inclusions.",
+                hashtags: ["TaiwanTravel", "Taipei", "Taichung", "FoodieTravel", "CompassPeak"],
+                flyer: "taiwan.jpg"
             }
         };
 
         const modal = document.getElementById('dest-modal');
+        const lightbox = document.getElementById('lightbox');
 
         window.openModal = function(id) {
-            const data = destinations[id];
-            document.getElementById('modal-title').innerText = data.title;
-            document.getElementById('modal-price').innerText = data.price;
-            document.getElementById('modal-tag').innerText = data.tag;
-            document.getElementById('modal-duration').innerText = data.duration;
-            document.getElementById('modal-flyer').src = data.flyer;
+            const item = data[id];
             
+            document.getElementById('modal-title').innerText = item.title;
+            document.getElementById('modal-price').innerText = item.price;
+            document.getElementById('modal-duration').innerText = item.duration;
+            document.getElementById('modal-tag').innerText = item.tag;
+            document.getElementById('modal-flyer').src = item.flyer;
+            document.getElementById('modal-intro').innerText = item.intro;
+            document.getElementById('modal-details').innerText = item.details;
+            
+            // Build bullets
+            const bulletContainer = document.getElementById('modal-bullets');
+            bulletContainer.innerHTML = '';
+            item.bullets.forEach(text => {
+                const li = document.createElement('li');
+                li.className = 'flex gap-3 items-start text-sm text-slate-600';
+                li.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 mt-0.5 shrink-0"></i> <span>${text}</span>`;
+                bulletContainer.appendChild(li);
+            });
+
+            // Footer texts
+            document.getElementById('modal-footer-text').innerHTML = `
+                <p class="mb-4">${item.closing}</p>
+                <p class="font-bold text-navy">${item.footerText}</p>
+            `;
+
+            // Hashtags
+            const hashtagContainer = document.getElementById('modal-hashtags');
+            hashtagContainer.innerHTML = '';
+            item.hashtags.forEach(tag => {
+                const span = document.createElement('span');
+                span.className = 'text-[9px] font-bold text-slate-400 bg-slate-100 px-3 py-1 rounded-full';
+                span.innerText = `#${tag}`;
+                hashtagContainer.appendChild(span);
+            });
+
+            document.getElementById('modal-whatsapp').href = `https://wa.me/639190966082?text=Inquiry for ${item.title}`;
+
+            lucide.createIcons();
             document.body.classList.add('modal-active');
             document.body.style.overflow = 'hidden';
         }
@@ -518,16 +635,19 @@
             document.body.classList.remove('modal-active');
             document.body.style.overflow = 'auto';
         }
+        
+        window.openLightbox = function() {
+            const flyerSrc = document.getElementById('modal-flyer').src;
+            document.getElementById('lightbox-img').src = flyerSrc;
+            lightbox.classList.add('active');
+        }
 
-        // Close on backdrop click
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-
-        // Close on Escape key
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
+        window.closeLightbox = function() {
+            lightbox.classList.remove('active');
+        }
+        
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+        window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
     </script>
 </body>
 </html>
