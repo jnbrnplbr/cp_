@@ -35,7 +35,25 @@
         .text-gold { color: var(--gold); }
         .border-gold { border-color: var(--gold); }
 
-                /* Modal Animations */
+        /* Nav Glassmorphism on Scroll */
+        #main-nav.scrolled {
+            background: rgba(26, 43, 68, 0.95);
+            backdrop-filter: blur(10px);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(181, 144, 93, 0.2);
+        }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(100%);
+        }
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Modal Animations */
         .modal-backdrop {
             background: rgba(26, 43, 68, 0.85);
             backdrop-filter: blur(8px);
@@ -78,20 +96,170 @@
         .modal-scroll::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
 
         .flyer-zoom:hover { transform: scale(1.02); transition: transform 0.5s ease; }
+
+        #contact-modal:not(.active) { opacity: 0; pointer-events: none; transform: scale(0.95); }
+        
+        .modal-overlay {
+            background: rgba(10, 15, 25, 0.8);
+            backdrop-filter: blur(8px);
+            transition: opacity 0.4s;
+        }
+        #contact-modal:not(.active) .modal-overlay { opacity: 0; }
     </style>
 </head>
 <body class="text-[#1a2b44]">
 
     <!-- Navigation -->
-    <nav id="main-nav" class="fixed w-full z-50 transition-all duration-500 py-6 px-6">
+    <nav id="main-nav" class="fixed w-full z-[100] transition-all duration-500 py-6 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <div class="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
+                    <img src="cplogo1.png" alt="Logo" class="w-full h-full object-contain" onerror="this.src='https://via.placeholder.com/60?text=CP'">
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl md:text-2xl font-bold tracking-tighter text-white  leading-none">Compass<span class="text-gold">Peak</span></span>
+                    <p class="text-[7px] md:text-[9px] uppercase tracking-[0.4em] text-gold font-bold mt-1">- Travel & Tours -</p>
+                </div>
+            </div>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-10 text-white">
+                <a href="#about" class="text-[10px] font-bold uppercase tracking-widest hover:text-gold transition-colors">About Us</a>
+                <a href="#featured" class="text-[10px] font-bold uppercase tracking-widest hover:text-gold transition-colors">Destinations</a>
+                <a href="#services" class="text-[10px] font-bold uppercase tracking-widest hover:text-gold transition-colors">Services</a>
+                <!-- <a href="https://wa.me/639190966082" target="_blank" class="gold-gradient text-navy px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-lg">
+                    Book Now
+                </a> -->
+                <button onclick="openContactModal()" class="gold-gradient text-navy px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-lg">
+                    Book Now
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button - Fixed Visibility -->
+            <button id="menu-toggle" class="md:hidden flex items-center justify-center w-12 h-12 bg-white/10 rounded-full border border-white/20 text-white focus:outline-none hover:bg-white/20 transition-all">
+                <i id="menu-icon" data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Contact Directory Modal -->
+    <div id="contact-modal" class="fixed inset-0 z-[200] flex items-center justify-center p-4">
+        <div class="modal-overlay absolute inset-0" onclick="closeContactModal()"></div>
+        <div class="relative bg-white w-full max-w-lg rounded-[2.5rem] overflow-hidden shadow-2xl">
+            <!-- Header -->
+            <div class="bg-navy p-8 text-center relative">
+                <button onclick="closeContactModal()" class="absolute top-6 right-6 text-white/50 hover:text-white transition-colors">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+                <h3 class="font-serif text-3xl text-white mb-2">Contact Directory</h3>
+                <p class="text-gold text-[10px] uppercase tracking-[0.3em] font-bold">Connect with CompassPeak</p>
+            </div>
+
+            <!-- Links Grid -->
+            <div class="p-6 md:p-10 grid grid-cols-1 gap-4 max-h-[70vh] overflow-y-auto">
+                
+                <!-- Social Media -->
+                <div class="grid grid-cols-2 gap-4">
+                    <a href="https://facebook.com/compasspeaktravel" target="_blank" class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-blue-50 border border-blue-100 hover:bg-blue-100 transition-colors">
+                        <!-- <i data-lucide="" class="text-blue-600 w-6 h-6"></i> -->
+                         <img class="text-blue-600 fill-blue-600" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" width="32" height="32" alt="Facebook">
+                        <span class="text-xs font-bold text-blue-900">Facebook</span>
+                    </a>
+                    <a href="https://www.instagram.com/compasspeaktravel/" target="_blank" class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-pink-50 border border-pink-100 hover:bg-pink-100 transition-colors">
+                        <!-- <i data-lucide="instagram" class="text-pink-600 w-6 h-6"></i> -->
+                         <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" width="32" height="32" alt="Instagram">
+                        <span class="text-xs font-bold text-pink-900">Instagram</span>
+                    </a>
+                </div>
+
+                <!-- Messaging & Phone -->
+                <a href="https://wa.me/639190966082" target="_blank" class="flex items-center gap-4 p-5 rounded-2xl bg-green-50 border border-green-100 hover:bg-green-100 transition-colors group">
+                    <div class="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center text-white">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase font-bold text-green-700 tracking-wider">WhatsApp</p>
+                        <p class="text-sm font-bold text-navy">+63 919 096 6082</p>
+                    </div>
+                    <i data-lucide="external-link" class="ml-auto w-4 h-4 text-green-300 group-hover:text-green-600"></i>
+                </a>
+
+                <a href="tel:+639190966082" class="flex items-center gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:bg-gray-200 transition-colors group">
+                    <div class="w-10 h-10 rounded-full bg-navy flex items-center justify-center text-white">
+                        <i data-lucide="phone" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase font-bold text-gray-500 tracking-wider">Phone Call</p>
+                        <p class="text-sm font-bold text-navy">+63 919 096 6082</p>
+                    </div>
+                    <i data-lucide="chevron-right" class="ml-auto w-4 h-4 text-gray-300 group-hover:text-navy"></i>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:hello@compasspeak.com" class="flex items-center gap-4 p-5 rounded-2xl bg-amber-50 border border-amber-100 hover:bg-amber-100 transition-colors group">
+                    <div class="w-10 h-10 rounded-full bg-gold flex items-center justify-center text-amber-600">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase font-bold text-amber-700 tracking-wider">Email Us</p>
+                        <p class="text-sm font-bold text-navy">cpineda@compasspeak.site</p>
+                    </div>
+                    <i data-lucide="copy" class="ml-auto w-4 h-4 text-amber-300 group-hover:text-gold" onclick="event.preventDefault(); copyEmail()"></i>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:hello@compasspeak.com" class="flex items-center gap-4 p-5 rounded-2xl bg-amber-50 border border-amber-100 hover:bg-amber-100 transition-colors group">
+                    <div class="w-10 h-10 rounded-full bg-gold flex items-center justify-center  text-amber-600">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase font-bold text-amber-700 tracking-wider">Email Us</p>
+                        <p class="text-sm font-bold text-navy">ceptravelservice@gmail.com</p>
+                    </div>
+                    <i data-lucide="copy" class="ml-auto w-4 h-4 text-amber-300 group-hover:text-gold" onclick="event.preventDefault(); copyEmail()"></i>
+                </a>
+
+                <p class="text-center text-[10px] text-gray-400 mt-4 uppercase tracking-widest">Available 24/7 for your inquiries</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[110] bg-navy flex flex-col p-8 md:hidden">
+        
+        <div class="flex justify-between items-center mb-16">
+            <div class="flex items-center">
+                <img src="favicon.png" alt="Logo" class="w-20 h-20 object-contain">
+                <div class="flex flex-col">
+                    <div class="text-2xl font-bold tracking-tighter text-white">Compass<span class="text-gold">Peak</span></div>
+                    <p class="text-[7px] md:text-[9px] uppercase tracking-[0.4em] text-gold font-bold mt-1">- Travel & Tours -</p>
+                </div>
+                
+            </div>
+            <button id="menu-close" class="text-white w-12 h-12 flex items-center justify-center bg-white/5 rounded-full">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+        </div>
+        <div class="flex flex-col gap-10 items-center text-center">
+            <a href="#about" class="mobile-link text-3xl font-serif text-white">About Us</a>
+            <a href="#featured" class="mobile-link text-3xl font-serif text-white">Destinations</a>
+            <a href="#services" class="mobile-link text-3xl font-serif text-white">Services</a>
+            
+            <div class="w-full h-px bg-white/10 my-4"></div>
+            
+            <button onclick="openContactModal()" class="gold-gradient w-full py-5 rounded-2xl text-navy font-black uppercase tracking-widest text-sm shadow-2xl">
+                Contact Directory
+            </button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <!-- <nav id="main-nav" class="fixed w-full z-50 transition-all duration-500 py-6 px-6">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <img src="cplogo1.png" alt="" class="w-20 h-20">
-                <!-- <div class="w-10 h-10 bg-[#1a2b44] rounded-full flex items-center justify-center border border-[#b5905d]/30">
-                    <i data-lucide="compass" class="text-[#b5905d] w-6 h-6"></i>
-                </div> -->
                 <div>
-                    <!-- <img src="cplogo2.png" alt="" class="h-20"> -->
                     <span class="text-2xl font-bold tracking-tighter text-white logo-text">Compass<span class="text-[#b5905d]">Peak</span></span>
                     <p class="text-[10px] uppercase tracking-[0.4em] text-[#b5905d]">- Travel & Tours - </p>
                 </div>
@@ -106,7 +274,7 @@
                 </a>
             </div>
         </div>
-    </nav>
+    </nav> -->
 
     <!-- Hero -->
     <section class="relative h-[80vh] flex items-center justify-center overflow-hidden">
@@ -442,7 +610,7 @@
                         </div> -->
                         <div>
                             <!-- <img src="cplogo2.png" alt="" class="h-20"> -->
-                            <span class="text-2xl font-bold tracking-tighter text-white logo-text">Compass<span class="text-[#b5905d]">Peak</span></span>
+                            <span class="text-2xl font-bold tracking-tighter text-[#1a2b44] logo-text">Compass<span class="text-[#b5905d]">Peak</span></span>
                             <p class="text-[10px] uppercase tracking-[0.4em] text-[#b5905d]">- Travel & Tours - </p>
                         </div>
                     </div>
@@ -471,30 +639,83 @@
         </div>
     </footer>
 
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-navy text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest opacity-0 transition-opacity pointer-events-none z-[300]">
+        Email copied to clipboard
+    </div>
+
     <script>
         lucide.createIcons();
 
-        // Navbar Scroll Logic
-        const nav = document.getElementById('main-nav');
-        const logoText = document.querySelectorAll('.logo-text');
-        const logoSubtext = document.querySelector('.logo-subtext');
-        const navLinks = document.querySelector('.nav-links');
+        // UI Helpers
+        function openContactModal() {
+            document.getElementById('contact-modal').classList.add('active');
+            document.getElementById('mobile-menu').classList.remove('active');
+            document.body.style.overflow = 'hidden';
+        }
 
+        function closeContactModal() {
+            document.getElementById('contact-modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function copyEmail() {
+            const el = document.createElement('textarea');
+            el.value = 'hello@compasspeak.com';
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            
+            const toast = document.getElementById('toast');
+            toast.style.opacity = '1';
+            setTimeout(() => toast.style.opacity = '0', 3000);
+        }
+
+        // Navigation Background Toggle
+        const nav = document.getElementById('main-nav');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 80) {
-                nav.classList.add('nav-scrolled');
-                logoText.forEach(el => { el.classList.add('text-navy'); el.classList.remove('text-white'); });
-                // logoSubtext.classList.remove('text-white/60');
-                // logoSubtext.classList.add('text-slate-400');
-                navLinks.classList.add('text-navy');
-                navLinks.classList.remove('text-white');
+            if (window.scrollY > 40) {
+                nav.classList.add('scrolled');
             } else {
-                nav.classList.remove('nav-scrolled');
-                // logoText.forEach(el => { el.classList.remove('text-navy'); el.classList.add('text-white'); });
-                // logoSubtext.classList.add('text-white/60');
-                // logoSubtext.classList.remove('text-slate-400');
-                navLinks.classList.remove('text-navy');
-                navLinks.classList.add('text-white');
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu(forceClose = false) {
+            if (forceClose) {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            } else {
+                const isOpen = mobileMenu.classList.toggle('active');
+                document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+            }
+        }
+
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
+        });
+
+        menuClose.addEventListener('click', () => toggleMenu(true));
+
+        // Close menu when clicking links
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                setTimeout(() => toggleMenu(true), 300);
+            });
+        });
+
+        // Close menu if user clicks outside content
+        document.addEventListener('click', (e) => {
+            if (mobileMenu.classList.contains('active') && !mobileMenu.contains(e.target) && e.target !== menuToggle) {
+                toggleMenu(true);
             }
         });
 
@@ -649,6 +870,18 @@
         
         modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
         window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+         // Initialize Icons
+        window.onload = () => {
+            lucide.createIcons();
+            
+            // Nav Scroll Effect
+            const nav = document.getElementById('main-nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 40) nav.classList.add('scrolled');
+                else nav.classList.remove('scrolled');
+            });
+        };
     </script>
 </body>
 </html>
