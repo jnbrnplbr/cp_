@@ -513,7 +513,7 @@
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
 
-             <div class="md:w-1/2 bg-slate-100 overflow-y-auto modal-scroll p-4 md:p-12">
+             <div class="md:w-1/2 bg-slate-100 overflow-y-auto modal-scroll pb-[200px] md:p-12">
                 <div class="relative group flyer-cursor" onclick="openLightbox()">
                     <img id="modal-flyer" src="" alt="Itinerary Flyer" class="w-full rounded-2xl shadow-2xl border border-slate-200 transition-transform duration-500 hover:scale-[1.01]">
                     <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 flex items-center justify-center transition-all opacity-0 group-hover:opacity-100">
@@ -573,10 +573,10 @@
 
                 <!-- Footer CTA -->
                 <div class="p-8 md:p-10 border-t border-slate-100 bg-white flex flex-col sm:flex-row gap-4">
-                    <a id="modal-whatsapp" href="#" target="_blank" class="flex-grow bg-navy text-white text-center py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-gold transition-all shadow-lg flex items-center justify-center gap-3">
+                    <button onclick="openContactModal()" class="flex-grow bg-navy text-white text-center py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-gold transition-all shadow-lg flex items-center justify-center gap-3">
                         <i data-lucide="message-circle" class="w-4 h-4"></i>
-                        Message on WhatsApp
-                    </a>
+                        Contact Us
+                    </button>
                     <button onclick="closeModal()" class="px-8 py-5 border border-slate-200 rounded-2xl font-bold text-[10px] uppercase tracking-widest hover:bg-slate-50 transition-all">
                         Maybe Later
                     </button>
@@ -846,7 +846,7 @@
                 hashtagContainer.appendChild(span);
             });
 
-            document.getElementById('modal-whatsapp').href = `https://wa.me/639190966082?text=Inquiry for ${item.title}`;
+            // document.getElementById('modal-whatsapp').href = `https://wa.me/639190966082?text=Inquiry for ${item.title}`;
 
             lucide.createIcons();
             document.body.classList.add('modal-active');
