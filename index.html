@@ -431,6 +431,43 @@
                         <button onclick="openModal('taiwan')" class="text-[10px] font-black uppercase tracking-widest text-navy border-b border-navy/20 pb-1 group-hover:border-gold transition-all">View Details</button>
                     </div>
                 </div>
+
+                 
+                <div class="group relative overflow-hidden rounded-[2rem] bg-slate-50" data-category="east-asia">
+                    <div class="h-64 overflow-hidden">
+                        <img src="bangkok.png" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[9px] font-black uppercase tracking-widest text-gold mb-2 block">Thailand</span>
+                        <h3 class="text-lg font-serif mb-4">Pattaya & Bangkok</h3>
+                        <p class="text-xl font-black mb-4">₱34,999</p>
+                        <button onclick="openModal('thailand')" class="text-[10px] font-black uppercase tracking-widest text-navy border-b border-navy/20 pb-1 group-hover:border-gold transition-all">View Details</button>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-[2rem] bg-slate-50" data-category="east-asia">
+                    <div class="h-64 overflow-hidden">
+                        <img src="hongkong.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[9px] font-black uppercase tracking-widest text-gold mb-2 block">Hong Kong & Macau</span>
+                        <h3 class="text-lg font-serif mb-4">Hong Kong & Macau</h3>
+                        <p class="text-xl font-black mb-4">₱29,999</p>
+                        <button onclick="openModal('hongkong')" class="text-[10px] font-black uppercase tracking-widest text-navy border-b border-navy/20 pb-1 group-hover:border-gold transition-all">View Details</button>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-[2rem] bg-slate-50" data-category="east-asia">
+                    <div class="h-64 overflow-hidden">
+                        <img src="vietnam2.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[9px] font-black uppercase tracking-widest text-gold mb-2 block">Vietnam</span>
+                        <h3 class="text-lg font-serif mb-4">Hanoi & Sapa</h3>
+                        <p class="text-xl font-black mb-4">₱33,999</p>
+                        <button onclick="openModal('hongkong')" class="text-[10px] font-black uppercase tracking-widest text-navy border-b border-navy/20 pb-1 group-hover:border-gold transition-all">View Details</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -557,7 +594,7 @@
                                 <!-- Dynamically filled -->
                             </ul>
                             
-                            <p id="modal-details" class="text-slate-600 mb-6"></p>
+                            <p id="modal-details" class="text-slate-600 mb-6 mt-5"></p>
                             
                             <div id="modal-footer-text" class="mt-8 pt-8 border-t border-slate-100 text-sm text-slate-500 leading-relaxed">
                                 <!-- Dynamic CTA text -->
@@ -803,6 +840,65 @@
                 footerText: "Taiwan is waiting for you! Send us a message for the latest schedule and inclusions.",
                 hashtags: ["TaiwanTravel", "Taipei", "Taichung", "FoodieTravel", "CompassPeak"],
                 flyer: "taiwan.jpg"
+            },
+            thailand: {
+                title: "Thailand: Pattaya & Bangkok Tour",
+                price: "₱34,999",
+                duration: "4 Days / 3 Nights",
+                tag: "Southeast Asia",
+                intro: "Savor the Spirit of Thailand!",
+                details: "Begin your journey in Pattaya, known for its stunning beaches, lively nightlife, and exciting water activities. Then continue to Bangkok, the bustling capital city rich in history, magnificent temples, and modern attractions.",
+                bullets: [
+                    "Visit Metal Castle and Will Gems Shop",
+                    "Wat Arun (Includes roundtrip boat across Chaophraya River)",
+                    "Sanctuary of Truth, Khaochichan (Laser Buddha)",
+                    "Buffet Dinner at Pattaya Tower",
+                    "Maeklong Railways, Damnoen Saduak Floating Market with Boat Ride"
+                    
+                ],
+                closing: "Food, culture, and nature all in one trip. <strong>BOOK YOUR SLOT TODAY!</strong>",
+                footerText: "Thailand is waiting for you! Send us a message for the latest schedule and inclusions.",
+                hashtags: ["ThailandTravel", "Pattaya", "Bangkok", "FoodieTravel", "CompassPeak"],
+                flyer: "thailand.png"
+            },
+            hongkong: {
+                title: "Hong Kong: Hong Kong Macau Tour",
+                price: "₱29,999",
+                duration: "4 Days / 3 Nights",
+                tag: "East Asia",
+                intro: "Explore the Vibrance of Hong Kong and the Charm of Macau!",
+                details: "Discover the dynamic contrast of two iconic destinations in one unforgettable journey. Explore Hong Kong, a vibrant metropolis known for its towering skyline, world-class shopping, and rich cultural heritage. Then step into the timeless elegance of Macau, where historic landmarks, European-inspired architecture, and modern entertainment create a unique travel experience.",
+                bullets: [
+                    "Convention and Exhibition Center, Golden Bauhinia Square",
+                    "Repulse Bay, Clock Tower, Victoria Peak, Avenue of Stars",
+                    "Disneyland, Jewerly Shop, Department Store, Duty Free Shop",
+                    "Pass the Hong Kong - Zhunai - Macau Bridge to Macau",
+                    "Golden Lotus Plaza, Archway of Dasanba, Fortaleze do Monte",
+                    "Temple A, Souvenir Shop in the Venetian Macao"
+                    
+                ],
+                closing: "Food, culture, and nature all in one trip. <strong>BOOK YOUR SLOT TODAY!</strong>",
+                footerText: "Hong Kong and Macau is waiting for you! Send us a message for the latest schedule and inclusions.",
+                hashtags: ["HongKongMacauTravel", "HongKong", "Macau", "FoodieTravel", "CompassPeak"],
+                flyer: "hongkongmacau.png"
+            },
+            vietnam2: {
+                title: "Vietnam: Hanoi & Sapa",
+                price: "₱33,999",
+                duration: "4 Days / 3 Nights",
+                tag: "Southeast Asia",
+                intro: "Discover the Soul of Vietnam: Hanoi & Sapa!",
+                details: "Begin in Hanoi, the country’s charming capital, known for its centuries-old architecture, vibrant street life, and deep-rooted traditions. Then travel to the scenic highlands of Sapa, where lush rice terraces, misty mountains, and unique ethnic cultures offer a peaceful escape from the city.",
+                bullets: [
+                    "Hanoi Tran Street, Hoan Kiem Lake",
+                    "Fansipan Mountain with train & cable car,",
+                    "Mona Sapa & Cat cat Village, Egg Coffee",
+                    "Lao Cai Internation Border Gate, Administration Center",
+                ],
+                closing: "Food, culture, and nature all in one trip. <strong>BOOK YOUR SLOT TODAY!</strong>",
+                footerText: "Vietname is waiting for you! Send us a message for the latest schedule and inclusions.",
+                hashtags: ["VietnamTravel", "Hanoi", "Sapa", "FoodieTravel", "CompassPeak"],
+                flyer: "hanoisapa.png"
             }
         };
 
